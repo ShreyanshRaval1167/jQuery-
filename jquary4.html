@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btnShow").attr("disable",true);
+                $("#btnHide").click(function(){
+                    if(confirm("Are you want to hide the division"))
+                    {
+                        $("#newDiv").hide(3000);
+                        $(this).attr("disable",true);
+                        $("#btnShow").attr("disable",false);
+                        $("#BtnToggle").text("show");
+                    }
+                });
+                $("#btnShow").click(function(){
+                        $("#newDiv").show(3000);
+                        $(this).attr("disable",true);
+                        $("#btnHide").attr("disable",false);
+                        $("#BtnToggle").text("Hide");
+                });
+                $("#btnToggle").click(function(){
+                    if(confirm("Are you want to show the division"))
+                    {
+                        $("#newDiv").hide(3000);
+                        ($(this).text()=="Hide")
+                        ?($(this).text("Show"),$("#BtnHide").attr("disable",true),$("#btnShow").attr("disable",false))
+                        :($(this).text("Hide"),$("#BtnHide").attr("disable",false),$("#btnShow").attr("disable",true));
+                    }
+                });
+                $("#btnPlus").click(function(){
+                        var MDHW=parseInt($("#newDiv").css("height"));
+                        if(MDHW<=500)
+                        {
+                            MDHW+=20;
+                            $("#newDiv").css("height",MDHW);
+                            $("#newDiv").css("width",MDHW);
+                        }
+                        else{
+                            alert("More 500px is not possible");
+                        }
+                });
+                $("#btnMin").click(function(){
+                        var MDHW=parseInt($("#newDiv").css("height"));
+                        if(MDHW>=100)
+                        {
+                            MDHW-=25;
+                            $("#newDiv").css("height",MDHW);
+                            $("#newDiv").css("width",MDHW);
+                        }
+                        else{
+                            alert("Less 100px is not possible");
+                        }
+                });
+        });
+    </script>
+    </script>
+</head>
+<body>
+    <div id="newDiv" style="height: 300px;width:300px;background-color: #FF00FF;">Hii</div>
+    <hr>
+    <button id="btnHide">Hide</button> &nbsp;&nbsp;&nbsp; <button id="btnShow">Show</button>
+    <button id="btnToggle">Hide</button>
+    <button id="btnPlus" style="font-size: xx-large;"><b>+</b></button> &nbsp;&nbsp; <button id="btnMin" style="font-size: xx-large;"><b>-</b></button>
+</body>
+</html>
